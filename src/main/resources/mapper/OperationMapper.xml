@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dazhenkeji.cbms.base.mapper.OperationMapper">
+    <resultMap id="BaseResultMap" type="com.dazhenkeji.cbms.base.entity.OperationLog">
+        <id column="operation_log_sn" property="operationLogSn" jdbcType="INTEGER"/>
+        <result column="operator_id" property="operationId" jdbcType="VARCHAR"/>
+        <result column="operation_type" property="operationType" jdbcType="VARCHAR"/>
+        <result column="operation_time" property="operationTime" jdbcType="TIMESTAMP"/>
+        <result column="fun_id" property="funId" jdbcType="VARCHAR"/>
+        <result column="operator_ip" property="operatorIp" jdbcType="VARCHAR"/>
+        <result column="server_ip" property="serverIp" jdbcType="VARCHAR"/>
+        <result column="fun_id" property="funId" jdbcType="VARCHAR"/>
+        <result column="operational_division_id" property="operationalDivisionId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="saveOperation" parameterType="com.dazhenkeji.cbms.base.entity.OperationLog">
+        INSERT INTO
+          operation_log
+          (operator_id,operation_type,operation_content,operation_time,operator_ip,server_ip,fun_id,operational_division_id)
+        VALUES
+          ('yunying', 'LGN', '登录成功', '2018-11-06 15:05:12', '192.168.1.43', '192.168.1.103', 'login', 'admin_manager');
+        INSERT INTO
+          operation_log
+          (operator_id,operation_type,operation_content,operation_time,operator_ip,server_ip,fun_id,operational_division_id)
+          VALUES
+          (#{operationId}, #{operationType}, #{operationContent}, #{operationTime}, #{operatorIp},#{serverIp}, #{funId},#{operationalDivisionId});
+
+    </insert>
+
+</mapper>
