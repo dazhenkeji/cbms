@@ -104,13 +104,16 @@ $(function() {
         var height = $(window).height() - $("body > .header").height();
         $(".wrapper").css("min-height", height + "px");
         var content = $(".wrapper").height();
+        debugger
         //If the wrapper height is greater than the window
         if (content > height)
-            //then set sidebar height to the wrapper
+        //then set sidebar height to the wrapper
             $(".left-side, html, body").css("min-height", content + "px");
+            //$(".left-side, html, body").css("height", "100%");
         else {
             //Otherwise, set the sidebar to the height of the window
             $(".left-side, html, body").css("min-height", height + "px");
+            //$(".left-side, html, body").css("height", "100%");
         }
     }
     //Fire upon load

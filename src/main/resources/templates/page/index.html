@@ -195,8 +195,14 @@
     <section class="content" id = "page">
         11111
     </section>
+    <footer class="main-footer text-center">
+        <p>Copyright &copy; 2017. All rights reserved. <p>
+    </footer>
 </aside>
 <script type="text/javascript">
+    $(function () {
+        minHeight();
+    })
     var ip = document.location.origin;
     function loadPage(url){
         alert(ip+url);
@@ -209,6 +215,23 @@
             }
         });
 
+    }
+    function minHeight() {
+        //Get window height and the wrapper height
+        var height = $(window).height() - $("body > .header").height();
+        $(".wrapper").css("min-height", height + "px");
+        var content = $(".wrapper").height();
+        debugger
+        //If the wrapper height is greater than the window
+        if (content > height)
+        //then set sidebar height to the wrapper
+            $("#page").css("min-height", content + "px");
+        //$(".left-side, html, body").css("height", "100%");
+        else {
+            //Otherwise, set the sidebar to the height of the window
+            $("#page").css("min-height", height + "px");
+            //$(".left-side, html, body").css("height", "100%");
+        }
     }
 </script>
 </body>
