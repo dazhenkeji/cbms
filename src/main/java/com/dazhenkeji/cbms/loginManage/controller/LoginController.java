@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController extends BaseController {
     @RequestMapping("/bb")
     public String test(){
-        //saveOperation();
+        //saveOperation();ss
         return "index";
     }
-    
-    @RequestMapping("/loadpage")
-    public String test1(){
-        return "text";
-    }
+
 }
