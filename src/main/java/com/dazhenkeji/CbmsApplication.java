@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CbmsApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(CbmsApplication.class, args);
     }
 
