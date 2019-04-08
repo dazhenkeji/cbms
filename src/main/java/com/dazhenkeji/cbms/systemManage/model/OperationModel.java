@@ -1,14 +1,15 @@
-package com.dazhenkeji.cbms.base.entity;
+package com.dazhenkeji.cbms.systemManage.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-
-public class OperationLog implements Serializable {
+/**
+ * created by lgl on 2019/4/4 14:02
+ **/
+public class OperationModel {
 
     public Integer operationLogSn;
 
-    public String operationId;
+    public String operatorId;  //用户编号  operator_ip
 
     public String operationType;
 
@@ -16,7 +17,7 @@ public class OperationLog implements Serializable {
 
     public Date operationTime;
 
-    public String operatorIp;
+    public String operatorIp;   //
 
     public String serverIp;
 
@@ -32,12 +33,12 @@ public class OperationLog implements Serializable {
         this.operationLogSn = operationLogSn;
     }
 
-    public String getOperationId() {
-        return operationId;
+    public String getOperatorId() {
+        return operatorId;
     }
 
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
+    public void setOperatorId(String operatorId) {
+        this.operatorId = operatorId;
     }
 
     public String getOperationType() {

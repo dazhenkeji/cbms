@@ -1,15 +1,14 @@
-package com.dazhenkeji.cbms.base.model;
+package com.dazhenkeji.cbms.systemManage.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * created by lgl on 2019/4/4 14:02
- **/
-public class OperationModel {
+
+public class OperationLog implements Serializable {
 
     public Integer operationLogSn;
 
-    public String operationId;
+    public String operatorId;
 
     public String operationType;
 
@@ -33,12 +32,12 @@ public class OperationModel {
         this.operationLogSn = operationLogSn;
     }
 
-    public String getOperationId() {
-        return operationId;
+    public String getOperatorId() {
+        return operatorId;
     }
 
-    public void setOperationId(String operationId) {
-        this.operationId = operationId;
+    public void setOperatorId(String operatorId) {
+        this.operatorId = operatorId;
     }
 
     public String getOperationType() {

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <div class="div4">
+            <div class="row" style="margin:5px;">
+                <div class="col-md-4">
+                    <label>用户编号</label>
+                    <input type="text" class="form-control"/>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary">查询</button>
+                    <button type="button" class="btn btn-primary">新增</button>
+                </div>
+            </div>
+        </div>
+        <div class="div4">
+            <div class="row" style="margin:5px;">
+                <div class="col-md-12">
+                    <table class="table" id="table-gird">
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var queryParam;
+    $(function () {
+        initTable();
+    })
+
+    function initTable(){
+        $("#table-gird").bootstrapTable({
+            method: "GET",
+            url: ip + "/operation/getList.action",
+            dataField: "rows",
+            dataType: "json",
+            contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+            undefinedText:'',
+            silent: true,
+            paginationLoop: false,
+            queryParamsType: "limit",
+            queryParams: queryParams,
+            showToggle: false,//是否显示详细视图和列表视图的切换按钮
+            cache: false,//是否使用缓存
+            pagination: true,//是否显示分页
+            sortable: true, //是否启用排序
+            striped: true, //是否显示行间隔色
+            sortOrder: "desc",//排序方式
+            sidePagination: "server",//分页方式：client客户端分页，server服务端分页
+            pageNumber : 1,
+            pageSize: 10,
+            pageList: [10,25],
+            showRefresh : true,//刷新按钮
+            columns: [{
+                field: "operatorId",
+                align: 'center',
+                title: "用户编号",
+            },
+                {
+                    field: "operatorIp",
+                    align: 'center',
+                    title: "ip地址"
+                },
+                {
+                    field: "operationTime",
+                    align: 'center',
+                    title: "操作时间"
+                },
+                {
+                    field: "funId",
+                    align: 'center',
+                    title: "操作模块"
+                },
+                {
+                    field: "operationContent",
+                    align: 'center',
+                    title: "操作动作"
+                }
+            ],
+        });
+    }
+
+    function queryParams(params) {
+        queryParam.start = params.offset;
+        queryParam.limit = params.limit;
+        queryParam.sortBy = params.sort;
+        queryParam.sortDir = params.order;
+        queryParam._time_stamp_ = new Date().getTime();
+        return queryParam;
+    }
+
+</script>

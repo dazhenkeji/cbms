@@ -44,7 +44,7 @@ a:focus {
 /* Header */
 body > .header {
   position: absolute;
-  height閿涳拷100px;
+  height:50px;
   top: 0;
   left: 0;
   right: 0;
@@ -113,7 +113,7 @@ body.fixed .wrapper {
 /* Content */
 .content {
   padding: 20px 15px;
-  background: #f9f9f9;
+  background: #e4e4e4;
 }
 /* Utility */
 /* H1 - H6 font */
@@ -425,13 +425,13 @@ body > .header .logo .icon {
   font-weight: 300;
 }
 .right-side > .content-header > .breadcrumb {
-  float: right;
+  /*float: right;*/
   background: transparent;
-  margin-top: 0px;
+  margin-top: -23px;
   margin-bottom: 0;
   font-size: 12px;
   padding: 7px 5px;
-  position: absolute;
+  /*position: absolute;*/
   top: 15px;
   right: 10px;
   -webkit-border-radius: 2px;

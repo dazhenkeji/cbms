@@ -1,8 +1,8 @@
 package com.dazhenkeji.cbms.base.controller;
 
-import com.dazhenkeji.cbms.base.model.OperationModel;
-import com.dazhenkeji.cbms.base.service.OperationSerivce;
-import com.dazhenkeji.cbms.base.service.OperationSerivceImpl;
+
+import com.dazhenkeji.cbms.systemManage.model.OperationModel;
+import com.dazhenkeji.cbms.systemManage.service.OperationSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -20,7 +20,7 @@ public class BaseController {
         om.setFunId("1");
         om.setOperationalDivisionId("1");
         om.setOperationContent("2");
-        om.setOperationId("1");
+        om.setOperatorId("1");
         om.setOperationTime(new Date());
         om.setOperationType("1");
         om.setOperatorIp("1");
