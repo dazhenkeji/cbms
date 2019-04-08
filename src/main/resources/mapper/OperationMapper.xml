@@ -13,18 +13,17 @@
         <result column="operational_division_id" property="operationalDivisionId" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="saveOperation" parameterType="com.dazhenkeji.cbms.base.entity.OperationLog">
-        INSERT INTO
+    <insert id="saveOperation" parameterType="com.dazhenkeji.cbms.base.model.OperationModel">
+        <!-- INSERT INTO
           operation_log
           (operator_id,operation_type,operation_content,operation_time,operator_ip,server_ip,fun_id,operational_division_id)
         VALUES
-          ('yunying', 'LGN', '登录成功', '2018-11-06 15:05:12', '192.168.1.43', '192.168.1.103', 'login', 'admin_manager');
+          ('yunying', 'LGN', '登录成功', '2018-11-06 15:05:12', '192.168.1.43', '192.168.1.103', 'login', 'admin_manager'); -->
         INSERT INTO
           operation_log
           (operator_id,operation_type,operation_content,operation_time,operator_ip,server_ip,fun_id,operational_division_id)
           VALUES
-          (#{operationId}, #{operationType}, #{operationContent}, #{operationTime}, #{operatorIp},#{serverIp}, #{funId},#{operationalDivisionId});
-
+          (#{om.operationId},#{om.operationType},#{om.operationContent},#{om.operationTime},#{om.operatorIp},#{om.serverIp},#{om.funId},#{om.operationalDivisionId});
     </insert>
 
 </mapper>

@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * created by lgl on 2019/4/4 13:27
  **/
 @Controller
-@RequestMapping("/aa")
 public class LoginController extends BaseController {
     @RequestMapping("/bb")
     public String test(){
-        saveOperation();
+        //saveOperation();
         return "index";
+    }
+    
+    @RequestMapping("/loadpage")
+    public String test1(){
+        return "text";
     }
 }
