@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CBMS登录</title>
+    <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+    <meta name="author" content="Vincent Garreau" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" media="screen" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+</head>
+<style>
+    /*定义一个名字为lefteaseinAnimate动画，实现从页面的左边淡入页面效果*/
+    @keyframes lefteaseinAnimate{
+        0%{ transform: translateX(-2000px); opacity: 0;}   /*在0%时设置文字在想X轴-2000px位移处（左边），透明度为0，也就是看不见文字*/
+        100%{ transform: translateX(0px); opacity: 1;}         /*在100%时设置文字在想X轴0px位移处，也就是原始布局的位置，透明度为1，也就是文字可以看见了*/
+    }
+    @-webkit-keyframes lefteaseinAnimate{
+        0%{ -webkit-transform: translateX(-2000px); opacity: 0;}
+        100%{ -webkit-transform: translateX(0px); opacity: 1;}
+    }
+    @-o-keyframes lefteaseinAnimate{
+        0%{ -webkit-transform: translateX(-2000px); opacity: 0;}
+        100%{ -webkit-transform: translateX(0px); opacity: 1;}
+    }
+    @-ms-keyframes lefteaseinAnimate{
+        0%{ -webkit-transform: translateX(-2000px); opacity: 0;}
+        100%{ -webkit-transform: translateX(0px); opacity: 1;}
+    }
+    @-moz-keyframes lefteaseinAnimate{
+        0%{ -webkit-transform: translateX(-2000px); opacity: 0;}
+        100%{ -webkit-transform: translateX(0px); opacity: 1;}
+    }
+    .company_name{
+        animation: lefteaseinAnimate 1s ease 1;    /*调用已定义好的动画lefteaseinAnimate，全程运行时间1S，进入的速度曲线为ease，只播放一次*/
+        -webkit-animation: lefteaseinAnimate 1s ease 1;
+        -ms-animation: lefteaseinAnimate 1s ease 1;
+        -o-animation: lefteaseinAnimate 1s ease 1;
+        -moz-animation: lefteaseinAnimate 1s ease 1;
+
+        /*规定动画的最后状态为结束状态*/
+        animation-fill-mode:forwards;
+        -webkit-animation-fill-mode: forwards;
+        -o-animation-fill-mode: forwards;
+        -ms-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+    }
+</style>
+<body>
+    <div id="particles-js">
+        <div class="login company_name">
+            <div class="login-top">
+                欢迎登录
+            </div>
+            <div class="login-center clearfix">
+                <div class="login-center-img"><img src="img/name.png"/></div>
+                <div class="login-center-input">
+                    <input type="text" name="" value="" placeholder="请输入您的用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的用户名'"/>
+                    <div class="login-center-input-text">用户名</div>
+                </div>
+            </div>
+            <div class="login-center clearfix">
+                <div class="login-center-img"><img src="img/password.png"/></div>
+                <div class="login-center-input">
+                    <input type="password" name=""value="" placeholder="请输入您的密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的密码'"/>
+                    <div class="login-center-input-text">密码</div>
+                </div>
+            </div>
+            <div class="login-button">
+                登陆
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/particles.min.js"></script>
+<script src="../js/login.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+    function hasClass(elem, cls) {
+        // cls = cls || '';
+        // if (cls.replace(/\s/g, '').length == 0) return false; //当cls没有参数时，返回false
+        // return new RegExp(' ' + cls + ' ').test(' ' + elem.className + ' ');
+        return false;
+    }
+
+    function addClass(ele, cls) {
+        if (!hasClass(ele, cls)) {
+            ele.className = ele.className == '' ? cls : ele.className + ' ' + cls;
+        }
+    }
+
+    function removeClass(ele, cls) {
+        if (hasClass(ele, cls)) {
+            var newClass = ' ' + ele.className.replace(/[\t\r\n]/g, '') + ' ';
+            while (newClass.indexOf(' ' + cls + ' ') >= 0) {
+                newClass = newClass.replace(' ' + cls + ' ', ' ');
+            }
+            ele.className = newClass.replace(/^\s+|\s+$/g, '');
+        }
+    }
+    document.querySelector(".login-button").onclick = function(){
+        // addClass(document.querySelector(".login"), "active")
+        // setTimeout(function(){
+        //     addClass(document.querySelector(".sk-rotating-plane"), "active")
+        //     document.querySelector(".login").style.display = "none"
+        // },800)
+        // setTimeout(function(){
+        //     removeClass(document.querySelector(".login"), "active")
+        //     removeClass(document.querySelector(".sk-rotating-plane"), "active")
+        //     document.querySelector(".login").style.display = "block"
+        //     alert("登录成功")
+        //
+        // },5000)
+    }
+    $(function () {
+        $(".login-button").click = function (){
+            $.ajax({
+                url: ip + "/confirm.action",
+                type: "POST",
+                data:{"userName":"","password":""},
+                dataType: "json",
+                success: function(data) {
+                    //$("#page").html(html);
+                }
+            })
+        }
+    });
+</script>
+</html>

@@ -1,7 +1,10 @@
 package com.dazhenkeji.cbms.systemManage.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dazhenkeji.cbms.systemManage.entity.OperationLog;
 import com.dazhenkeji.cbms.systemManage.service.OperationSerivce;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +32,14 @@ public class OperationController {
 
     @GetMapping("/getList.action")
     @ResponseBody
-    public List<OperationLog> getList(){
-        return service.getOperationList();
+    public JSONObject getList(){
+        PageHelper.startPage(1,10);
+        List<OperationLog> operationList = service.getOperationList();
+        PageInfo<OperationLog> page = new PageInfo<>(operationList);
+
+        JSONObject result = new JSONObject();
+        result.put("rows", page.getList());
+        result.put("total",page.getTotal());
+        return result;
     }
 }
