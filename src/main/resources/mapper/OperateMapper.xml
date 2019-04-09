@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dazhenkeji.cbms.operate_partition.mapper.OperateMapper">
+    <resultMap id="operateMap" type="com.dazhenkeji.cbms.operate_partition.entity.OperatePartition">
+        <id column="id" property="id"></id>
+        <result column="operate_name" property="operateName" jdbcType="VARCHAR"></result>
+        <result column="head" property="head"></result>
+        <result column="code" property="code" ></result>
+        <result column="region_name" property="regionName" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="findPage" parameterType="java.lang.String" resultMap="operateMap" >
+        select * from operate_partition
+        <where>
+            <if test="str != null">
+                and head = #{str}
+            </if>
+        </where>
+    </select>
+    <insert id="save" parameterType="com.dazhenkeji.cbms.operate_partition.entity.OperatePartition">
+        insert into operate_partition(operate_name,code,region_name,head)
+        values (#{operateName},#{code},#{regionName},#{head})
+    </insert>
+    <update id="update" parameterType="com.dazhenkeji.cbms.operate_partition.entity.OperatePartition">
+        update operate_partition set
+        operate_name=#{operateName},code=#{code},region_name=#{regionName},head=#{head} where id =#{id}
+    </update>
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.dazhenkeji.cbms.operate_partition.entity.OperatePartition">
+        select * from operate_partition where id=#{id}
+    </select>
+    <delete id="del" parameterType="java.lang.Integer">
+        delete from operate_partition where id=#{id}
+    </delete>
+</mapper>
